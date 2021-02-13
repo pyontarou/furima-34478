@@ -31,7 +31,6 @@
 | shipping_date_id | integer    | null: false                    |
 | price            | integer    | null: false                    |
 | seller_user      | references | null: false, foreign_key: true |
-| shipping         | references | null: false, foreign_key: true |
 
 ### Association
 
@@ -44,7 +43,6 @@
 | ---------  | ---------- | ------------------------------ |
 | buyer_user | references | null: false, foreign_key: true |
 | item       | references | null: false, foreign_key: true |
-| address    | references | null: false, foreign_key: true |
 
 ### Association
 
@@ -66,4 +64,4 @@
 
 ### Association
 
-- has_one :order
+- belongs_to :order
