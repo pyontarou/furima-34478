@@ -30,7 +30,7 @@
 | region_id        | integer    | null: false                    |
 | shipping_date_id | integer    | null: false                    |
 | price            | integer    | null: false                    |
-| seller_user      | references | null: false, foreign_key: true |
+| user             | references | null: false, foreign_key: true |
 
 ### Association
 
@@ -41,7 +41,7 @@
 
 | Column     | Type       | Options                        |
 | ---------  | ---------- | ------------------------------ |
-| buyer_user | references | null: false, foreign_key: true |
+| user       | references | null: false, foreign_key: true |
 | item       | references | null: false, foreign_key: true |
 
 ### Association
@@ -54,7 +54,7 @@
 
 | Column             | Type       | Options                        |
 | -----------------  | ---------- | ------------------------------ |
-| prefecture_code_id | integer    | null: false                    |
+| prefecture_code_id | string    | null: false                    |
 | prefectures_id     | integer    | null: false                    |
 | city               | string     | null: false                    |
 | house_number       | string     | null: false                    |
