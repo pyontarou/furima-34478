@@ -38,6 +38,12 @@ describe User do
         expect(another_user.errors.full_messages).to include("Email has already been taken")
       end
 
+      it 'emailに@が含まれないと登録できないこと' do
+        @user.email = "aaaagmail.com"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Email is invalid")
+      end
+
       it 'passwordが空では登録できないこと' do
         @user.password = ""
         @user.valid?
@@ -60,6 +66,18 @@ describe User do
 
       it 'passwordは半角英数字混合でなければ登録できないこと' do
         @user.password = "aaaaaa"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Password 英字と数字の両方を含めて設定してください")
+      end
+      
+      it 'passwordは数字のみでは登録できないこと' do
+        @user.password = "111111"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Password 英字と数字の両方を含めて設定してください")
+      end
+      
+      it 'passwordは全角では登録できないこと' do
+        @user.password = "１a１a１a"
         @user.valid?
         expect(@user.errors.full_messages).to include("Password 英字と数字の両方を含めて設定してください")
       end
