@@ -1,19 +1,19 @@
 class OrderAddress
   include ActiveModel::Model 
-  attr_accessor :prefecture_code, :prefectures_id, :city, :house_number, :building_name, :phone_number, :item_id, :user_id,:token, :order_id
-
+  attr_accessor :prefecture_code, :prefectures_id, :city, :house_number, :building_name, :phone_number, :item_id, :user_id,:token 
   with_options presence: true do
+    validates :token
+    validates :prefecture_code,format: { with: /\A\d{3}[-]\d{4}\z/, message: 'Input correctly'}
+    validates :prefectures_id, numericality: { other_than: 1 , message: 'Input correctly'}
     validates :city
     validates :house_number
-    validates :prefectures_id, numericality: { other_than: 1 }
-    validates :prefecture_code,format: { with: /\A\d{3}[-]\d{4}\z/, message: '郵便番号はハイフンが必要です'}
-    validates :phone_number, format: { with: /\A\d{10,11}\z/, message: '電話番号は11桁以内の数値を入力してください' }
+    validates :phone_number, format: { with: /\A\d{10,11}\z/, message: 'Input only number' }
   end
 
   
   def save
     order = Order.create(user_id:user_id, item_id:item_id)
-    Address.create(prefecture_code:prefecture_code,prefectures_id:prefectures_id,city:city,house_number:house_number,building_name:building_name,phone_number:phone_number,order_id:order.id)
+    Address.create(prefecture_code:prefecture_code,prefectures_id:prefectures_id,city:city,house_number:house_number,building_name:building_name,phone_number:phone_number,order_id:order.id )
   end
   
   
