@@ -2,7 +2,9 @@ require 'rails_helper'
 
   describe OrderAddress do
     before do
-      @order_address = FactoryBot.build(:order_address)
+      @user = FactoryBot.create(:user)
+      @item = FactoryBot.create(:item)
+      @order_address = FactoryBot.build(:order_address,user_id:@user.id,item_id:@item.id)
     end
 
     describe '商品の購入' do
