@@ -2,7 +2,7 @@ class Address < ApplicationRecord
   belongs_to :order
 
   extend ActiveHash::Associations::ActiveRecordExtensions
-  belongs_to :prefectures
+  belongs_to :prefecture
 
 
 end
