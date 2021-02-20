@@ -54,6 +54,4 @@ class ItemsController < ApplicationController
     return redirect_to root_path if current_user.id != @item.user_id
     return redirect_to root_path if @item.order != nil 
    end
-  end
-
 end
