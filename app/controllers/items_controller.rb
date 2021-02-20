@@ -5,7 +5,6 @@ class ItemsController < ApplicationController
 
   def index
     @items = Item.all.order("created_at DESC")
-    order = Order.new
   end
 
   def new
@@ -22,11 +21,10 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @order = Order.new  
   end
   
   def edit
-    if current_user.id == @item.user_id && @item.order != nil 
+    if @item.order != nil 
       redirect_to root_path 
    end
   end
