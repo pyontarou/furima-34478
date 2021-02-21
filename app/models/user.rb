@@ -6,6 +6,8 @@ class User < ApplicationRecord
          
   has_many :items
   has_many :orders
+  has_many :messages
+
 
   validates :password , format: {with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i, message:'英字と数字の両方を含めて設定してください' }      
 
