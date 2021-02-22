@@ -141,9 +141,9 @@
 /* /商品の概要 */
 
 .comment-box {
-  width: 40vw;
+  width: 70vw;
   background-color: #fff;
-  margin: 5vh 0;
+  margin: 3vh 0;
   text-align: center;
 }
 
@@ -190,8 +190,15 @@
 
 }
 
+.messages {
+  font-size: 20px;
+  color:gray;
+  text-align: left;
+}
+
+
 .change-item-btn {
-  font-size: 30px;
+  font-size: 20px;
   text-decoration: none;
   color: #3CCACE;
 }
@@ -202,5 +209,5 @@
   color: #3CCACE;
   text-decoration: none;
   font-weight: bold;
-  font-size: 23px;
+  font-size: 20px;
 }

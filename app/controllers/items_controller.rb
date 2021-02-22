@@ -19,8 +19,10 @@ class ItemsController < ApplicationController
       render :new
     end
   end
-
+  
   def show
+    @message = Message.new
+    @messages = @item.messages.includes(:user)
   end
   
   def edit
