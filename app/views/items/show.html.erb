@@ -62,16 +62,23 @@
         </tr>
       </tbody>
     </table>
-    <div class="option">
-      <div class="favorite-btn">
-        <%= image_tag "star.png" ,class:"favorite-star-icon" ,width:"20",height:"20"%>
-        <span>お気に入り 0</span>
+      <div class="option">
+    <% if current_user.already_liked?(@item)  %>
+        <div class="favorite-btn">
+          <%= image_tag "star.png" ,class:"favorite-star-icon" ,width:"20",height:"20"%>
+          <span><%= link_to "お気に入り",item_like_path(@item),method: :delete %><%= @item.likes.count %></span>
+        </div>
+    <% else %>
+        <div class="favorite-btn">
+          <%= image_tag "star.png" ,class:"favorite-star-icon" ,width:"20",height:"20" %>
+          <span><%= link_to "お気に入り",item_likes_path(@item),method: :post %><%= @item.likes.count %></span>
+        </div>
+    <% end %>
+        <div class="report-btn">
+          <%= image_tag "flag.png" ,class:"report-flag-icon" ,width:"20",height:"20"%>
+          <span>不適切な商品の通報</span>
+        </div>
       </div>
-      <div class="report-btn">
-        <%= image_tag "flag.png" ,class:"report-flag-icon" ,width:"20",height:"20"%>
-        <span>不適切な商品の通報</span>
-      </div>
-    </div>
   </div>
   <%# /商品の概要 %>
 

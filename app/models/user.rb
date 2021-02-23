@@ -7,7 +7,12 @@ class User < ApplicationRecord
   has_many :items
   has_many :orders
   has_many :messages
+  has_many :likes
+  has_many :liked_items, through: :likes, source: :post
 
+  def already_liked?(item)
+    self.likes.exists?(item_id: item.id )
+  end
 
   validates :password , format: {with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i, message:'英字と数字の両方を含めて設定してください' }      
 
