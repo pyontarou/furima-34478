@@ -39,7 +39,7 @@
 - belongs_to :user
 - has_one :order
 - has_many :messages
-- has_one :likes
+- has_many :likes
 
 ## orders テーブル
 
