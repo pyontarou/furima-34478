@@ -23,6 +23,7 @@ class ItemsController < ApplicationController
   def show
     @message = Message.new
     @messages = @item.messages.includes(:user)
+    @like = Like.new
   end
   
   def edit

@@ -7,5 +7,6 @@ Rails.application.routes.draw do
     end
     resources :messages, only: [:create]
     resources :orders, only: [:index, :create]
+    resources :likes, only: [:create, :destroy]
   end
 end
