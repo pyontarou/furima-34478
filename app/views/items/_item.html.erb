@@ -1,0 +1,10 @@
+ <% if current_user&.like?(@item)  %>
+    <span><%= link_to "お気に入り",item_like_path(item_id: @item, id: current_user.likes.find_by(item_id: @item)), method: :delete, class:'item-like',remote: true  %><%= @item.likes.count %></span>
+  
+<% else %>
+    <span><%= link_to "お気に入り",item_likes_path(@item), method: :post,  remote: true %><%= @item.likes.count %></span>
+<% end %>
+
+  
+    
+        

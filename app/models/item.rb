@@ -3,8 +3,9 @@ class Item < ApplicationRecord
   has_one :order
   has_one_attached :image
   has_many :messages
-  has_many :likes
-  has_many :liked_users, through: :likes, source: :user
+  has_many :likes, dependent: :destroy
+  has_many :users, through: :likes
+
 
   
   with_options presence: true do

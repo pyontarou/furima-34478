@@ -4,15 +4,24 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
          
-  has_many :items
+  has_many :items, dependent: :destroy
   has_many :orders
   has_many :messages
-  has_many :likes
-  has_many :liked_items, through: :likes, source: :post
+  has_many :likes, dependent: :destroy
+  has_many :like_items, through: :likes, source: :item
 
-  def already_liked?(item)
-    self.likes.exists?(item_id: item.id )
+  def like(item)
+    likes.find_or_create_by(item: item)
   end
+  
+  def like?(item)
+    like_items.include?(item)
+  end
+  
+  def unlike(item)
+    like_items.delete(item)
+  end
+
 
   validates :password , format: {with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i, message:'英字と数字の両方を含めて設定してください' }      
 
